@@ -102,10 +102,7 @@
 
       <a class="nav-link" href="/love-notes/">Love Notes</a>
       <a class="nav-link" href="/about/">About</a>
-      <a class="btn btn-primary nav-cta-mobile" href="#">Get the App</a>
     </nav>
-
-    <a class="btn btn-primary header-cta" href="#">Get the App</a>
   </div>
 </header>
 
@@ -124,11 +121,46 @@
     </div>
   </section>
 
+  <!-- ============ Featured ============ -->
   <section>
     <div class="wrap">
-      <div class="empty-note">
-        <p class="empty-title">Our first marriage guides are being written</p>
-        <p>New pieces land here soon. Until then, the weekly prompt below is the best of us in one line.</p>
+      <a class="article-card category-feature" href="/marriage/marriage-advice/">
+        <img src="../images/marriage-advice-hero.webp" alt="An older couple laughing together at a kitchen table, decades into a marriage" width="1200" height="675">
+        <div class="card-body">
+          <span class="tag tag--coral">Featured</span>
+          <h2>Marriage advice from marriages that lasted</h2>
+          <p class="card-desc">Nine pieces that survive contact with an actual Tuesday, and three famous ones that don't.</p>
+          <span class="row-foot"><span class="pill-meta">4 min read</span><span class="circle-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ All articles ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>All marriage guides</h2>
+      </div>
+      <div class="article-rows" id="article-list">
+        <a class="article-card row-card" href="/marriage/questions-to-ask-before-marriage/">
+          <img src="../images/questions-to-ask-before-marriage-hero.webp" alt="" width="1200" height="675">
+          <div>
+            <h3>Questions to ask before marriage (including the uncomfortable ones)</h3>
+            <p class="card-desc">Forty questions sorted by topic, including the ones the wedding playlist crowds out.</p>
+            <span class="pill-meta">4 min read</span>
+          </div>
+          <span class="circle-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></span>
+        </a>
+        <a class="article-card row-card" href="/marriage/keep-marriage-strong/">
+          <img src="../images/keep-marriage-strong-hero.webp" alt="" width="1200" height="675">
+          <div>
+            <h3>How to keep your marriage strong (it's smaller than you think)</h3>
+            <p class="card-desc">The weekly maintenance schedule, small on purpose: rituals, repair speed, catching drift early.</p>
+            <span class="pill-meta">3 min read</span>
+          </div>
+          <span class="circle-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -136,12 +168,11 @@
   <section>
     <div class="wrap">
       <div class="newsletter">
-        <h2>One thoughtful prompt, once a week</h2>
-        <p>A single question or small idea to bring home to your person. No noise, no spam, just something worth talking about.</p>
-        <!-- PLACEHOLDER: replace this form with kit-form.html verbatim before going live -->
-        <form class="newsletter-form" onsubmit="return false;">
-          <input type="email" placeholder="Your email" aria-label="Email address">
-          <button class="btn btn-primary" type="submit">Send me one</button>
+        <h2>Something small is in the works for couples</h2>
+        <p>Leave your email and be the first to know. No noise, no spam, just one good surprise.</p>
+        <form class="newsletter-form" action="https://app.kit.com/forms/9541803/subscriptions" method="post">
+          <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
+          <button class="btn btn-primary" type="submit">Keep me posted</button>
         </form>
       </div>
     </div>
@@ -189,7 +220,6 @@
       <span>© 2026 Couple Nest</span>
       <a href="/about/">About</a>
       <a href="/privacy/">Privacy</a>
-      <a href="#">Get the App</a>
     </div>
   </div>
 </footer>
