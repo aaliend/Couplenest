@@ -1,0 +1,329 @@
+/* ==========================================================================
+   Couple Nest — blog stylesheet (article body styles only)
+   Upload once to: couplenest.net/css/blog.css
+   Load order on article pages: /css/site.css FIRST, then this file.
+   site.css owns the chrome: header, nav, dropdown, footer, breadcrumb,
+   tags, pills, circle button. This file styles the article column.
+   Tokens are duplicated from site.css — keep the two in sync.
+   ========================================================================== */
+
+/* ---- Font: Albert Sans (self-hosted, files in /fonts/) ---- */
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../fonts/albert-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../fonts/albert-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../fonts/albert-sans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Tokens ---- */
+:root {
+  --cream: #FBF3E9;
+  --surface: #FFFFFF;
+  --orange: #EE8A3C;
+  --orange-deep: #d9742a;
+  --yellow: #F3C24C;
+  --yellow-tint: #FCF3DC;
+  --blue: #85C5D2;
+  --blue-tint: #EEF6F8;
+  --coral: #F06B5A;
+  --ink: #1F1B16;
+  --muted: #6B5E52;
+  --line: #EFE4D6;
+  --radius-card: 22px;
+  --radius-small: 14px;
+  --shadow-card: 0 2px 12px rgba(31, 27, 22, 0.06);
+  --font: "Albert Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---- Base ---- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 880px; /* reading measure at 19px body — do not exceed */
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+/* site.css gives homepage <section>s 44px padding — article sections must not inherit it */
+.page section { padding: 0; }
+/* anchor jumps (TOC, FAQ) must land below the 68px sticky header */
+[id] { scroll-margin-top: 88px; }
+a { color: var(--orange); text-decoration: none; }
+a:hover { color: var(--orange-deep); text-decoration: underline; }
+
+h1, h2, h3 { line-height: 1.25; font-weight: 700; color: var(--ink); }
+h1 { font-size: 2rem; margin: 0.4em 0; }
+h2 { font-size: 1.45rem; margin: 2em 0 0.6em; }
+h3 { font-size: 1.15rem; margin: 1.6em 0 0.4em; font-weight: 600; }
+p { margin: 0 0 1.1em; }
+
+/* Breadcrumb: styled by site.css */
+
+/* ---- Hero ---- */
+.hero-intro {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0.6em 0 1em;
+}
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+/* ---- Article actions (share + Instagram, top right of byline) ---- */
+.article-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.icon-btn:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+.icon-btn svg { width: 17px; height: 17px; }
+.share-menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  background: var(--surface);
+  border-radius: var(--radius-small);
+  box-shadow: 0 6px 24px rgba(31, 27, 22, 0.14);
+  padding: 8px;
+  display: none;
+  min-width: 180px;
+  z-index: 30;
+}
+.share-menu.open { display: block; }
+.share-menu a,
+.share-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.share-menu a:hover,
+.share-menu button:hover { background: var(--cream); color: var(--ink); text-decoration: none; }
+.hero-img, .article-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  display: block;
+}
+.article-img { margin: 28px 0; }
+.article-img figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ---- Table of contents ---- */
+.toc {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 22px 26px;
+  margin: 32px 0;
+}
+.toc h2 { margin: 0 0 10px; font-size: 1.05rem; }
+.toc ol { margin: 0; padding-left: 1.2em; }
+.toc li { margin: 6px 0; }
+.toc a { color: var(--ink); }
+.toc a:hover { color: var(--orange); }
+
+/* ---- Emphasis ----
+   strong = the one sentence to remember: ink + soft yellow marker highlight.
+   em = named terms and inner voice, plain italic.
+   Caps: ~4 strong and ~4 em per article. Never orange (orange = links). */
+.article-body strong {
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, rgba(243, 194, 76, 0.38) 62%);
+  padding: 0 1px;
+}
+.article-body em { font-style: italic; }
+
+/* ---- Lists ---- */
+.article-body ul { padding-left: 1.1em; list-style: none; }
+.article-body ul > li {
+  position: relative;
+  padding-left: 0.9em;
+  margin: 10px 0;
+}
+.article-body ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.article-body ol { padding-left: 1.4em; }
+.article-body ol > li { margin: 10px 0; }
+.article-body ol > li::marker { color: var(--orange); font-weight: 600; }
+
+/* ---- Tables ---- */
+.table-wrap { overflow-x: auto; margin: 28px 0; }
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border-radius: var(--radius-small);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  font-size: 0.95rem;
+}
+th, td { padding: 12px 16px; text-align: left; }
+th {
+  background: var(--yellow-tint);
+  font-weight: 600;
+}
+tr:not(:last-child) td { border-bottom: 1px solid var(--line); }
+
+/* ---- Callouts ----
+   Tints are deliberately deeper than the cream page so the cards read
+   as cards; the page bg is #FBF3E9 — never tint a callout near that. */
+.callout {
+  border-radius: var(--radius-small);
+  padding: 14px 16px;
+  margin: 24px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout .callout-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.callout--therapy { background: #E2EFF3; }
+.callout--therapy .callout-label { color: #336E80; }
+.callout--try { background: #F8E7C0; }
+.callout--try .callout-label { color: #96500F; }
+.callout--know { background: #F0E3D0; }
+.callout--know .callout-label { color: #6B5E52; }
+
+/* ---- Question card (signature component) ---- */
+.question-card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.question-card .question-card-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin: 0 0 10px;
+}
+.question-card ul { list-style: none; padding: 0; margin: 0; }
+.question-card li {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 12px 0;
+}
+.question-card li:not(:last-child) { border-bottom: 1px solid var(--line); }
+
+/* ---- Pull quote ---- */
+.pullquote {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.45;
+  border-left: 4px solid var(--orange);
+  padding: 4px 0 4px 20px;
+  margin: 32px 0;
+  color: var(--ink);
+}
+
+/* ---- CTA box (wraps the Kit form) ---- */
+.cta-box {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 10px;
+  margin: 40px 0;
+}
+.cta-box .cta-lead {
+  padding: 16px 18px 0;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---- FAQ ---- */
+.faq h3 { margin-top: 1.4em; }
+
+/* ---- Related articles ---- */
+.related { margin-top: 48px; }
+.related-card {
+  display: block;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 20px 24px;
+  margin: 14px 0;
+  color: var(--ink);
+}
+.related-card:hover { text-decoration: none; transform: translateY(-1px); }
+.related-card .related-title { font-weight: 600; color: var(--ink); margin: 0 0 4px; }
+.related-card .related-hook { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+/* Footer: full site footer, styled by site.css */
+
+/* ---- Responsive ---- */
+@media (min-width: 700px) {
+  body { font-size: 19px; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.6rem; }
+  .page { padding: 40px 24px 80px; }
+}
