@@ -166,13 +166,17 @@
 
   <section>
     <div class="wrap">
-      <div class="newsletter">
-        <h2>Something small is in the works for couples</h2>
-        <p>Leave your email and be the first to know. No noise, no spam, just one good surprise.</p>
-        <form class="newsletter-form" action="https://app.kit.com/forms/9541803/subscriptions" method="post">
-          <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
-          <button class="btn btn-primary" type="submit">Keep me posted</button>
-        </form>
+      <div class="surprise-cta">
+        <img class="surprise-cta-img" src="../images/surprise-cta.webp" alt="" width="800" height="800" loading="lazy">
+        <div class="surprise-cta-body">
+          <p class="surprise-cta-title">Something small is in the works</p>
+          <p class="surprise-cta-text">We're quietly making something for the two of you. Leave your email and we'll surprise you when it's ready.</p>
+          <form class="newsletter-form surprise-form" action="https://app.kit.com/forms/9541803/subscriptions" method="post">
+            <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
+            <button class="btn btn-primary" type="submit">Count us in</button>
+          </form>
+          <p class="surprise-cta-note">No spam, no newsletter. One good email when it&rsquo;s ready.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -219,6 +223,7 @@
       <span>© 2026 Couple Nest</span>
       <a href="/about/">About</a>
       <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
     </div>
   </div>
 </footer>
@@ -230,5 +235,18 @@
   });
 </script>
 
+<script>
+  // Surprise form: subscribe via Kit, then show our own thank-you page
+  document.querySelectorAll('form.surprise-form').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var b = f.querySelector('button[type="submit"]');
+      b.disabled = true; b.textContent = 'One sec\u2026';
+      fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+        .then(function (r) { if (!r.ok) throw new Error('subscribe failed'); window.location.href = '/thanks/'; })
+        .catch(function () { HTMLFormElement.prototype.submit.call(f); });
+    });
+  });
+</script>
 </body>
 </html>
